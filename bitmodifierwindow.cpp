@@ -29,11 +29,24 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     QGridLayout *bitLayout = new QGridLayout();
 
     for (int i = 0; i < 32; i++) {
+
+        // Ensure grayPalette and boldFont are defined
+        QPalette grayPalette;
+        grayPalette.setColor(QPalette::WindowText, Qt::gray);
+        QFont boldFont;
+        boldFont.setBold(true);
+
         bitLabels[i] = new QLabel(QString::number(31 - i), this);
+        bitLabels[i]->setAlignment(Qt::AlignCenter);
+        bitLabels[i]->setPalette(grayPalette);
+        bitLabels[i]->setFont(boldFont);        // Apply bold font
+        bitLabels[i]->setCursor(Qt::PointingHandCursor);
+        bitLabels[i]->setAttribute(Qt::WA_Hover, true);
+
+
         bitButtons[i] = new QPushButton("0", this);
-        bitButtons[i]->setCheckable(true);
-        bitButtons[i]->setStyleSheet("background-color: none");
-        bitButtons[i]->setFixedSize(QSize(30, 30)); // Set a fixed size for the buttons
+        bitButtons[i]->setStyleSheet("padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
+        bitButtons[i]->setFixedSize(QSize(30, 50)); // Set a fixed size for the buttons
 
         if (i < 16) {
             bitLayout->addWidget(bitLabels[i], 0, i);
@@ -120,7 +133,7 @@ void bitmodifierwindow::onClearClicked()
     currentValue = 0;
     for (int i = 0; i < 32; i++) {
         bitButtons[i]->setText("0");
-        bitButtons[i]->setStyleSheet("background-color: none");
+        bitButtons[i]->setStyleSheet("background-color: none; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
     }
 }
 
@@ -129,7 +142,6 @@ void bitmodifierwindow::updateBinaryRepresentation()
     for (int i = 0; i < 32; i++) {
         int bitValue = (currentValue >> (31 - i)) & 1;
         bitButtons[i]->setText(QString::number(bitValue));
-        bitButtons[i]->setChecked(bitValue == 1);
     }
 }
 
@@ -146,7 +158,19 @@ void bitmodifierwindow::toggleBit(int bitIndex)
     // Update the button text and background color
     int newBitValue = (currentValue >> bitIndex) & 1;
     bitButtons[31 - bitIndex]->setText(QString::number(newBitValue));
-    bitButtons[31 - bitIndex]->setStyleSheet(newBitValue == 1 ? "background-color: yellow" : "background-color: none");
+
+    // Toggle the button's background color 
+    QString currentStyle = bitButtons[31 - bitIndex]->styleSheet();
+    // Print the content of clickedBits
+    qDebug() << "currentStyle:" << currentStyle;
+
+    if (currentStyle.contains("yellow") == false) {
+        bitButtons[31 - bitIndex]->setStyleSheet("background-color: yellow; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
+        bitButtons[31 - bitIndex]->setFixedSize(QSize(30, 50)); 
+    } else {
+        bitButtons[31 - bitIndex]->setStyleSheet("background-color: none; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
+        bitButtons[31 - bitIndex]->setFixedSize(QSize(30, 50)); 
+    }
 
     updateHexValue();
 }
