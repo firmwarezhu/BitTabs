@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "bitviewerwindow.h"
+#include "bitmodifierwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,32 +12,19 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the tab widget
     QTabWidget *tabWidget = new QTabWidget(this);
 
+    tabWidget->setStyleSheet("QTabBar::tab { min-width: 100px; max-width: 200px; }");
+
     // Create the first tab with a layout
     QWidget *BitViewerTab = new BitViewerWindow();
-    QVBoxLayout *layoutBitViewerTab = new QVBoxLayout(BitViewerTab);
-    QLabel *label1 = new QLabel("This is the bitviewer tab");
-    QPushButton *button1 = new QPushButton("Button in Tab 1");
-    layoutBitViewerTab->addWidget(label1);
-    layoutBitViewerTab->addWidget(button1);
     tabWidget->addTab(BitViewerTab, "BitViewer");
 
-    // Create the second tab with a layout
-    QWidget *secondTab = new QWidget();
-    QVBoxLayout *layout2 = new QVBoxLayout(secondTab);
-    QLabel *label2 = new QLabel("This is the second tab");
-    QPushButton *button2 = new QPushButton("Button in Tab 2");
-    layout2->addWidget(label2);
-    layout2->addWidget(button2);
-    tabWidget->addTab(secondTab, "Tab 2");
+    // Create the BitModifier tab with a layout
+    QWidget *BitModifierTab = new bitmodifierwindow();
+    tabWidget->addTab(BitModifierTab, "BitModifier");
 
     // Create the third tab with a layout
     QWidget *thirdTab = new QWidget();
-    QVBoxLayout *layout3 = new QVBoxLayout(thirdTab);
-    QLabel *label3 = new QLabel("This is the third tab");
-    QPushButton *button3 = new QPushButton("Button in Tab 3");
-    layout3->addWidget(label3);
-    layout3->addWidget(button3);
-    tabWidget->addTab(thirdTab, "Tab 3");
+    tabWidget->addTab(thirdTab, "Add&Size");
 
     // Style the tab bar to bold the font of the selected tab
     tabWidget->setStyleSheet(R"(
