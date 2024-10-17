@@ -23,6 +23,12 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     mainLayout->addWidget(hexInput);
 
     hex2BinButton = new QPushButton("Hex2Bin", this);
+    hex2BinButton->setStyleSheet(
+    "background-color: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 14px;"
+    "font-weight: bold; cursor: pointer;"
+    "}"
+    "QPushButton:hover { background-color: #45a049; }"
+    );
     mainLayout->addWidget(hex2BinButton);
 
     // Create bit labels and buttons for 32 bits
@@ -70,6 +76,12 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     mainLayout->addWidget(updatedHexOutput);
 
     clearButton = new QPushButton("Clear", this);
+    clearButton->setStyleSheet(
+    "background-color: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 14px;"
+    "font-weight: bold; cursor: pointer;"
+    "}"
+    "QPushButton:hover { background-color: #45a049; }"
+    );
     mainLayout->addWidget(clearButton);
 
     // Set the layout's size constraint to prevent it from expanding indefinitely
@@ -142,6 +154,7 @@ void bitmodifierwindow::updateBinaryRepresentation()
     for (int i = 0; i < 32; i++) {
         int bitValue = (currentValue >> (31 - i)) & 1;
         bitButtons[i]->setText(QString::number(bitValue));
+        bitButtons[i]->setStyleSheet("background-color: none; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
     }
 }
 
