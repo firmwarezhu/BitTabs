@@ -9,6 +9,15 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     // Layouts
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
+    // Fix the spacing between items and the edges of the layout
+    mainLayout->setSpacing(10); // Set the fixed space between items
+    mainLayout->setContentsMargins(20, 10, 20, 40); // Remove any default 
+
+    // Reminder label
+    patternReminderLabel = new QLabel("Reminder:\n- Hex: start with '0x' or end with 'h' or without them (e.g., 0x1F,1Fh,1F) \n- It's case-insensitive", this);
+    patternReminderLabel->setStyleSheet("font-size: 14px; color: #333; padding: 5px;");
+    mainLayout->addWidget(patternReminderLabel);
+
     // Input label 
     QLabel *inputLabel = new QLabel("Enter Hex:", this);
     inputLabel->setStyleSheet("font-size: 14px; color: #333;");
@@ -67,7 +76,10 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
 
     mainLayout->addLayout(bitLayout);
 
+    mainLayout->setSpacing(10);
+
     QLabel *updatedLabel = new QLabel("Updated Hex:", this);
+    updatedLabel->setStyleSheet("font-size: 14px; color: #333;");
     mainLayout->addWidget(updatedLabel);
 
     updatedHexOutput = new QLineEdit(this);
@@ -97,6 +109,14 @@ void bitmodifierwindow::onHex2BinClicked()
     QString hexStr = hexInput->text();
 
     // Validate hex input
+    if (hexStr.startsWith("0x", Qt::CaseInsensitive)) {
+        hexStr = hexStr.mid(2); // Remove the "0x" prefix
+    }
+
+    if (hexStr.endsWith("h", Qt::CaseInsensitive)) {
+        hexStr.chop(1); // Remove the "h" suffix
+    }
+
     QRegularExpression hexRegex("^[0-9A-Fa-f]{1,8}$");
     if (!hexRegex.match(hexStr).hasMatch()) {
         QMessageBox::warning(this, "Invalid Input", "Please enter a valid hex value (1-8 characters).");

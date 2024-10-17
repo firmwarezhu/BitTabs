@@ -25,6 +25,7 @@ private:
     void updateHexValue();
     void toggleBit(int bitIndex);
 
+    QLabel *patternReminderLabel;
     QLineEdit *hexInput;
     QLineEdit *updatedHexOutput;
     QPushButton *hex2BinButton;
