@@ -102,6 +102,8 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     // Connect buttons
     connect(hex2BinButton, &QPushButton::clicked, this, &bitmodifierwindow::onHex2BinClicked);
     connect(clearButton, &QPushButton::clicked, this, &bitmodifierwindow::onClearClicked);
+    // Connect hexInput returnPressed event to onHex2BinClicked
+    connect(hexInput, &QLineEdit::returnPressed, this, &bitmodifierwindow::onHex2BinClicked);
 }
 
 void bitmodifierwindow::onHex2BinClicked()
