@@ -1,2 +1,2 @@
 # BitTabs
-Hex, decimal, binary conversions and calculations
+Hex, decimal, binary integer conversion and calculation
