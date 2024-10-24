@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include "bitviewerwindow.h"
 #include "bitmodifierwindow.h"
+#include "addrsizecalc.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     tabWidget->addTab(BitModifierTab, "BitModifier");
 
     // Create the third tab with a layout
-    QWidget *thirdTab = new QWidget();
-    tabWidget->addTab(thirdTab, "Add&Size");
+    QWidget *Addrizecalc = new addrsizeCalc();
+    tabWidget->addTab(Addrizecalc, "AddrSizeCalc");
 
     // Style the tab bar to bold the font of the selected tab
     tabWidget->setStyleSheet(R"(
