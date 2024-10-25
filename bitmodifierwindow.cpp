@@ -19,7 +19,7 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     mainLayout->addWidget(patternReminderLabel);
 
     // Input label 
-    QLabel *inputLabel = new QLabel("Enter Hex:", this);
+    QLabel *inputLabel = new QLabel("Enter <b>Hex</b>:", this);
     inputLabel->setStyleSheet("font-size: 14px; color: #333;");
     inputLabel->setContentsMargins(0, 0, 0, 5); // Adjust the bottom margin
 
@@ -45,15 +45,11 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
 
     for (int i = 0; i < 32; i++) {
 
-        // Ensure grayPalette and boldFont are defined
-        QPalette grayPalette;
-        grayPalette.setColor(QPalette::WindowText, Qt::gray);
+        // Ensure boldFont are defined
         QFont boldFont;
         boldFont.setBold(true);
-
         bitLabels[i] = new QLabel(QString::number(31 - i), this);
         bitLabels[i]->setAlignment(Qt::AlignCenter);
-        bitLabels[i]->setPalette(grayPalette);
         bitLabels[i]->setFont(boldFont);        // Apply bold font
         bitLabels[i]->setCursor(Qt::PointingHandCursor);
         bitLabels[i]->setAttribute(Qt::WA_Hover, true);
@@ -178,7 +174,7 @@ void bitmodifierwindow::updateBinaryRepresentation()
 
 void bitmodifierwindow::updateHexValue()
 {
-    updatedHexOutput->setText(QString::number(currentValue, 16).toUpper());
+    updatedHexOutput->setText(QString::number(currentValue, 16).toUpper().prepend("0x"));
 }
 
 void bitmodifierwindow::toggleBit(int bitIndex)
