@@ -61,14 +61,14 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     QPushButton *clearBDButton = new QPushButton("Clear Breakdown", this);
     clearBDButton->setStyleSheet(
         "QPushButton {"
-        "   background-color: dimgray;"
+        "   background-color: #4A90E2;"  // Darker blue with a gray tint, same as before but slightly adjusted for thickness
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid dimgray;"
+        "   border: 2px solid #4A90E2;"  // Darker blue with a gray tint border to match the background
         "   border-radius: 5px;"
         "}"
-        );
+    );
     buttonLayout->addWidget(clearBDButton); // Add clear button to layout
     // Add the button layout to your main layout
     layout->addLayout(buttonLayout); // Assuming mainLayout is your main layout
@@ -153,11 +153,11 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     QPushButton *clearSizeButton = new QPushButton("Clear Size", this);
     clearSizeButton->setStyleSheet(
         "QPushButton {"
-        "   background-color: dimgray;"
+        "   background-color: #4A90E2;"  // Darker blue with a gray tint, same as before but slightly adjusted for thickness
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid dimgray;"
+        "   border: 2px solid #4A90E2;"  // Darker blue with a gray tint border to match the background
         "   border-radius: 5px;"
         "}"
         );
@@ -224,14 +224,14 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     tfbuttonLayout->addWidget(transformButton);
 
     // Clear button
-    QPushButton *clearButton = new QPushButton("Clear", this);
+    QPushButton *clearButton = new QPushButton("Clear Tranform", this);
     clearButton->setStyleSheet(
         "QPushButton {"
-        "   background-color: dimgray;"
+        "   background-color: #4A90E2;"  // Darker blue with a gray tint, same as before but slightly adjusted for thickness
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid dimgray;"
+        "   border: 2px solid #4A90E2;"  // Darker blue with a gray tint border to match the background
         "   border-radius: 5px;"
         "}"
         );
