@@ -25,7 +25,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
 
     // Input field for conversion
     inputField = new QLineEdit(this);
-    inputField->setStyleSheet("font-size: 12px; padding: 10px;");
+    inputField->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 14px;");
     inputField->setPlaceholderText("Enter a value...");
     conversionLayout->addWidget(inputField);
 
@@ -36,7 +36,8 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
 
     // Result label
     resultConversionLineEdit = new QLineEdit(this);
-    resultConversionLineEdit->setStyleSheet("font-size: 12px; padding: 10px;");
+    resultConversionLineEdit->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid darkgray; font-size: 14px;");
+    resultConversionLineEdit->setReadOnly(true);
     conversionLayout->addWidget(resultConversionLineEdit);
 
     layout->addLayout(conversionLayout);
@@ -51,7 +52,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid darkgray;"
+        "   border: 1px solid darkgray;"
         "   border-radius: 5px;"
         "}"
         );
@@ -77,7 +78,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     resultLine->setPlaceholderText("Result will be displayed here");
     //set it read only and copiable
     resultLine->setReadOnly(true);
-    resultLine->setStyleSheet("font-size: 12px; padding: 10px; text-align: left;");
+    resultLine->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid darkgray; font-size: 14px;");
     layout->addWidget(resultLine);
 
     // // Add a vertical spacer
@@ -93,7 +94,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     QHBoxLayout *sizeConversionLayout = new QHBoxLayout();
 
     sizeInputField = new QLineEdit(this);
-    sizeInputField->setStyleSheet("font-size: 12px; padding: 10px;");
+    sizeInputField->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 14px;");
     sizeInputField->setPlaceholderText("Enter a decimal value...");
     sizeConversionLayout->addWidget(sizeInputField);
 
@@ -127,7 +128,8 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
     resultLabelForSize = new QLineEdit(this);
     resultLabelForSize->setFixedWidth(250);  // Adjust to ensure result fits 18 characters
     resultLabelForSize->setAlignment(Qt::AlignLeft);  // Left align the result
-    resultLabelForSize->setStyleSheet("font-size: 12px; padding: 10px;");
+    resultLabelForSize->setReadOnly(true);
+    resultLabelForSize->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid darkgray; font-size: 14px;");
     sizeConversionLayout->addWidget(resultLabelForSize);
 
     layout->addLayout(sizeConversionLayout);
@@ -143,7 +145,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid darkgray;"
+        "   border: 1px solid darkgray;"
         "   border-radius: 5px;"
         "}"
         );
@@ -199,7 +201,8 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
 
     // Result line edit
     resulttransformLineEdit = new QLineEdit(this);
-    resulttransformLineEdit->setStyleSheet("font-size: 12px; padding: 10px;");
+    resulttransformLineEdit->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid darkgray; font-size: 14px;");
+    resulttransformLineEdit->setReadOnly(true);
     chunkCalcLayout->addWidget(resulttransformLineEdit);
 
     // Add the chunkCalcLayout to the conversion layout
@@ -216,7 +219,7 @@ addrsizeCalc::addrsizeCalc(QWidget *parent)
         "   color: white;"
         "   font-size: 12px;"
         "   padding: 10px;"
-        "   border: 2px solid darkgray;"
+        "   border: 1px solid darkgray;"
         "   border-radius: 5px;"
         "}"
         );
@@ -420,7 +423,7 @@ void addrsizeCalc::clearSizeFields() {
 // Helper function to create input and label
 void addrsizeCalc::createInputLabel(QLineEdit *&inputField, QLabel *&label, const QString &labelText, QHBoxLayout *layout) {
     inputField = new QLineEdit(this);
-    inputField->setStyleSheet("font-size: 12px; padding: 10px;");
+    inputField->setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 10px;");
     inputField->setPlaceholderText("0");
 
     label = new QLabel(labelText, this);
