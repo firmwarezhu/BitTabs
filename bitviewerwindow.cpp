@@ -82,10 +82,6 @@ BitViewerWindow::BitViewerWindow(QWidget *parent)
     QGridLayout *bitLayout = new QGridLayout();
     layout->addLayout(bitLayout);
 
-    // Black color palette for bit number labels
-    QPalette grayPalette;
-    grayPalette.setColor(QPalette::WindowText, Qt::gray);
-
     // Bold font
     QFont boldFont;
     boldFont.setBold(true);  // Set the font to bold
@@ -94,11 +90,11 @@ BitViewerWindow::BitViewerWindow(QWidget *parent)
     for (int i = 0; i < 32; i++) {
         bitNumberLabels[31 - i] = new QLabel(QString::number(31 - i), this);
         bitNumberLabels[31 - i]->setAlignment(Qt::AlignCenter);
-        bitNumberLabels[31 - i]->setPalette(grayPalette);
         bitNumberLabels[31 - i]->setFont(boldFont);        // Apply bold font
         bitNumberLabels[31 - i]->setCursor(Qt::PointingHandCursor);
         bitNumberLabels[31 - i]->setAttribute(Qt::WA_Hover, true);
         bitNumberLabels[31 - i]->installEventFilter(this);
+        bitNumberLabels[31 - i]->setStyleSheet("background-color: none;"); 
 
         if (i < 16) {
             bitLayout->addWidget(bitNumberLabels[31 - i], 0, i);
@@ -195,8 +191,8 @@ void BitViewerWindow::clearBits()
         bitLabels[i]->setText("0"); // Reset bit value
         bitLabels[i]->setStyleSheet("padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;"); // Reset style
 
-        // Reset clicked bit number color
-        bitNumberLabels[i]->setStyleSheet("color: gray;"); // Reset clicked bit number to gray
+    // Reset clicked bit number to gray
+        bitNumberLabels[i]->setStyleSheet("background-color: none;"); 
     }
 }
 
@@ -270,8 +266,8 @@ void BitViewerWindow::clearSelectedBitsAndResult()
     clickedBits.clear(); // Clear the clicked bits
 
     for (int i = 0; i < 32; i++) {
-        // Reset the style of the clicked bit numbers to grey
-        bitNumberLabels[i]->setStyleSheet("color: gray;");
+        // Reset background color
+        bitNumberLabels[i]->setStyleSheet("background-color: none;"); 
     }
 
     resultLabel->setText("Field Result: "); // Clear the field calculation result
