@@ -61,7 +61,6 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
 
         bitButtons[i] = new QPushButton("0", this);
         bitButtons[i]->setStyleSheet("padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
-        bitButtons[i]->setFixedSize(QSize(30, 50)); // Set a fixed size for the buttons
 
         if (i < 16) {
             bitLayout->addWidget(bitLabels[i], 0, i);
@@ -96,9 +95,6 @@ bitmodifierwindow::bitmodifierwindow(QWidget *parent) : QWidget(parent), current
     );
     mainLayout->addWidget(clearButton);
 
-    // Set the layout's size constraint to prevent it from expanding indefinitely
-    mainLayout->setSizeConstraint(QLayout::SetFixedSize);
-    
     // Connect buttons
     connect(hex2BinButton, &QPushButton::clicked, this, &bitmodifierwindow::onHex2BinClicked);
     connect(clearButton, &QPushButton::clicked, this, &bitmodifierwindow::onClearClicked);
@@ -201,10 +197,8 @@ void bitmodifierwindow::toggleBit(int bitIndex)
 
     if (currentStyle.contains("yellow") == false) {
         bitButtons[31 - bitIndex]->setStyleSheet("background-color: yellow; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
-        bitButtons[31 - bitIndex]->setFixedSize(QSize(30, 50)); 
     } else {
         bitButtons[31 - bitIndex]->setStyleSheet("background-color: none; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;");
-        bitButtons[31 - bitIndex]->setFixedSize(QSize(30, 50)); 
     }
 
     updateHexValue();
