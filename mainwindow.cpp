@@ -6,6 +6,7 @@
 #include "bitviewerwindow.h"
 #include "bitmodifierwindow.h"
 #include "addrsizecalc.h"
+#include "power2calc.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the third tab with a layout
     QWidget *Addrizecalc = new addrsizeCalc();
     tabWidget->addTab(Addrizecalc, "AddrSizeCalc");
+
+    // Create the forth tab with a layout
+    QWidget *Power2Calc = new power2calc();
+    tabWidget->addTab(Power2Calc, "Power2Calc");
 
     // Style the tab bar to bold the font of the selected tab
     tabWidget->setStyleSheet(R"(

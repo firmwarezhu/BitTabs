@@ -23,7 +23,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         addrsizecalc.cpp addrsizecalc.h bitmodifierwindow.cpp bitmodifierwindow.h bitviewerwindow.cpp bitviewerwindow.h
-    )
+        power2calc.cpp power2calc.h
+        )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CoderNumConverter APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
