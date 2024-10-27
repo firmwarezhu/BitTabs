@@ -113,9 +113,9 @@ power2calc::power2calc(QWidget *parent) : QWidget(parent) {
     gridLayout->addWidget(decimalComboBox, 1, 3); // Row 1, Column 3
     
 
-// Add the label and combo box to the layout
-gridLayout->addWidget(unitsLabel, 3, 0); // Adjust row and column as needed
-gridLayout->addWidget(unitsComboBox, 3, 1); // Adjust row and column as needed
+    // Add the label and combo box to the layout
+    gridLayout->addWidget(unitsLabel, 3, 0); // Adjust row and column as needed
+    gridLayout->addWidget(unitsComboBox, 3, 1); // Adjust row and column as needed
 
     // Set vertical spacing between rows
     gridLayout->setVerticalSpacing(10);
@@ -123,70 +123,69 @@ gridLayout->addWidget(unitsComboBox, 3, 1); // Adjust row and column as needed
 
     mainLayout->addLayout(gridLayout);
 
-    mainLayout->addSpacing(20);
 
-        // QLabel as a custom title with HTML for "2^n" formatting
-        QLabel *titleLabel = new QLabel("<b>2<sup>n</sup></b> representations:", this);
-        titleLabel->setStyleSheet("font-size: 16px; font-weight: bold; color: #2196F3;");
-        titleLabel->setAlignment(Qt::AlignLeft);
-        mainLayout->addWidget(titleLabel);
+    // QLabel as a custom title with HTML for "2^n" formatting
+    titleLabel = new QLabel("<b>2<sup>n</sup></b> representations:", this);
+    titleLabel->setStyleSheet("font-size: 16px; font-weight: bold; color: #2196F3;");
+    titleLabel->setAlignment(Qt::AlignLeft);
+    mainLayout->addWidget(titleLabel);
 
-        // GroupBox to group the results and add a title "2^n"
-        QGroupBox *resultGroup = new QGroupBox(this);
-        resultGroup->setStyleSheet("background-color: #f0f0f0; padding: 10px;");  // Light grey background with padding
-        QVBoxLayout *groupLayout = new QVBoxLayout(resultGroup);
+    // GroupBox to group the results and add a title "2^n"
+    QGroupBox *resultGroup = new QGroupBox(this);
+    resultGroup->setStyleSheet("background-color: #f0f0f0; padding: 10px;");  // Light grey background with padding
+    QVBoxLayout *groupLayout = new QVBoxLayout(resultGroup);
 
-        // Custom font for labels
-        QFont fixedLabelFont;
-        fixedLabelFont.setBold(true);
+    // Custom font for labels
+    QFont fixedLabelFont;
+    fixedLabelFont.setBold(true);
 
-        QFont valueFont;
-        valueFont.setItalic(true);
+    QFont valueFont;
+    valueFont.setItalic(true);
 
-        // Row 1: Address Line number
-        QHBoxLayout *addrlineLayout = new QHBoxLayout();
-        QLabel *addrlineLabel = new QLabel("Address Line number:", this);
-        addrlineLabel->setFont(fixedLabelFont);
+    // Row 1: Address Line number
+    QHBoxLayout *addrlineLayout = new QHBoxLayout();
+    QLabel *addrlineLabel = new QLabel("Address Line number:", this);
+    addrlineLabel->setFont(fixedLabelFont);
 
-        QLabel *addrlineValueLabel = new QLabel("0 address line", this);  // Placeholder for dynamic text
-        addrlineValueLabel->setFont(valueFont);
-        addrlineValueLabel->setAlignment(Qt::AlignRight);
+    addrlineValueLabel = new QLabel("0 address line", this);  // Placeholder for dynamic text
+    addrlineValueLabel->setFont(valueFont);
+    addrlineValueLabel->setAlignment(Qt::AlignRight);
 
-        addrlineLayout->addWidget(addrlineLabel);
-        addrlineLayout->addStretch();  // Add stretch to push value to the right
-        addrlineLayout->addWidget(addrlineValueLabel);
-        groupLayout->addLayout(addrlineLayout);
+    addrlineLayout->addWidget(addrlineLabel);
+    addrlineLayout->addStretch();  // Add stretch to push value to the right
+    addrlineLayout->addWidget(addrlineValueLabel);
+    groupLayout->addLayout(addrlineLayout);
 
-        // Row 2: Address space size
-        QHBoxLayout *addrSpaceSizeLayout = new QHBoxLayout();
-        QLabel *addrSpaceSizeLabel = new QLabel("Address space size:", this);
-        addrSpaceSizeLabel->setFont(fixedLabelFont);
+    // Row 2: Address space size
+    QHBoxLayout *addrSpaceSizeLayout = new QHBoxLayout();
+    QLabel *addrSpaceSizeLabel = new QLabel("Address space size:", this);
+    addrSpaceSizeLabel->setFont(fixedLabelFont);
 
-        QLabel *addrSpaceSizeValueLabel = new QLabel("0x0 = 0 Byte", this);  // Placeholder for dynamic text
-        addrSpaceSizeValueLabel->setFont(valueFont);
-        addrSpaceSizeValueLabel->setAlignment(Qt::AlignRight);
+    addrSpaceSizeValueLabel = new QLabel("0x0 = 0 Byte", this);  // Placeholder for dynamic text
+    addrSpaceSizeValueLabel->setFont(valueFont);
+    addrSpaceSizeValueLabel->setAlignment(Qt::AlignRight);
 
-        addrSpaceSizeLayout->addWidget(addrSpaceSizeLabel);
-        addrSpaceSizeLayout->addStretch();
-        addrSpaceSizeLayout->addWidget(addrSpaceSizeValueLabel);
-        groupLayout->addLayout(addrSpaceSizeLayout);
+    addrSpaceSizeLayout->addWidget(addrSpaceSizeLabel);
+    addrSpaceSizeLayout->addStretch();
+    addrSpaceSizeLayout->addWidget(addrSpaceSizeValueLabel);
+    groupLayout->addLayout(addrSpaceSizeLayout);
 
-        // Row 3: Address range
-        QHBoxLayout *addrRangeLayout = new QHBoxLayout();
-        QLabel *addrRangeLabel = new QLabel("Address range:", this);
-        addrRangeLabel->setFont(fixedLabelFont);
+    // Row 3: Address range
+    QHBoxLayout *addrRangeLayout = new QHBoxLayout();
+    QLabel *addrRangeLabel = new QLabel("Address range:", this);
+    addrRangeLabel->setFont(fixedLabelFont);
 
-        QLabel *addrRangeValueLabel = new QLabel("From 0 to 0", this);  // Placeholder for dynamic text
-        addrRangeValueLabel->setFont(valueFont);
-        addrRangeValueLabel->setAlignment(Qt::AlignRight);
+    addrRangeValueLabel = new QLabel("From 0 to 0", this);  // Placeholder for dynamic text
+    addrRangeValueLabel->setFont(valueFont);
+    addrRangeValueLabel->setAlignment(Qt::AlignRight);
 
-        addrRangeLayout->addWidget(addrRangeLabel);
-        addrRangeLayout->addStretch();
-        addrRangeLayout->addWidget(addrRangeValueLabel);
-        groupLayout->addLayout(addrRangeLayout);
+    addrRangeLayout->addWidget(addrRangeLabel);
+    addrRangeLayout->addStretch();
+    addrRangeLayout->addWidget(addrRangeValueLabel);
+    groupLayout->addLayout(addrRangeLayout);
 
-        // Add the group box to the main layout
-        mainLayout->addWidget(resultGroup);
+    // Add the group box to the main layout
+    mainLayout->addWidget(resultGroup);
 
 
 
@@ -219,4 +218,10 @@ void power2calc::updateComboBoxes() {
         hexComboBox->setCurrentIndex(currentIndex);
         decimalComboBox->setCurrentIndex(currentIndex);
     }
+
+    //update the content of group box title and its members
+    titleLabel->setText(QString("2<sup>%1</sup> representations").arg(powerComboBox->currentText()));
+    addrlineValueLabel->setText(QString("%1").arg(hexComboBox->currentText()));
+    addrSpaceSizeValueLabel->setText(QString("%1 = %2 = %3").arg(hexComboBox->currentText(),unitsComboBox->currentText(),decimalComboBox->currentText()));
+    addrRangeValueLabel->setText(QString("From 0 to %1").arg(QString::number(hexComboBox->currentText().toLongLong(0, 16) - 1, 16).toUpper().prepend("0x")));  
 }

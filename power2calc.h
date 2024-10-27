@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QGridLayout> // Include QGridLayout
+#include <QLabel>
 
 class power2calc : public QWidget {
     Q_OBJECT
@@ -19,6 +20,11 @@ private:
     QComboBox *decimalComboBox;
     QComboBox *unitsComboBox;
     QGridLayout *gridLayout; // Declare the grid layout
+    QLabel *titleLabel;
+    QLabel *addrlineValueLabel;
+    QLabel *addrSpaceSizeValueLabel;
+    QLabel *addrRangeValueLabel;
+    
 };
 
 #endif // power2calc_H
