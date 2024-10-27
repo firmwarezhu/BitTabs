@@ -145,7 +145,7 @@ power2calc::power2calc(QWidget *parent) : QWidget(parent) {
 
     // Row 1: Address Line number
     QHBoxLayout *addrlineLayout = new QHBoxLayout();
-    QLabel *addrlineLabel = new QLabel("Address Line number:", this);
+    QLabel *addrlineLabel = new QLabel("The number of address lines:", this);
     addrlineLabel->setFont(fixedLabelFont);
 
     addrlineValueLabel = new QLabel("0 address line", this);  // Placeholder for dynamic text
@@ -222,7 +222,7 @@ void power2calc::updateComboBoxes() {
 
     //update the content of group box title and its members
     titleLabel->setText(QString("2<sup>%1</sup> representations").arg(powerComboBox->currentText()));
-    addrlineValueLabel->setText(QString("%1").arg(hexComboBox->currentText()));
+    addrlineValueLabel->setText(QString("%1").arg(powerComboBox->currentText()));
     addrSpaceSizeValueLabel->setText(QString("%1 = %2 = %3").arg(hexComboBox->currentText(),unitsComboBox->currentText(),decimalComboBox->currentText()));
     addrRangeValueLabel->setText(QString("From 0 to %1").arg(QString::number(hexComboBox->currentText().toLongLong(0, 16) - 1, 16).toUpper().prepend("0x")));  
 }
