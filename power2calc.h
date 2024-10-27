@@ -10,7 +10,9 @@ class power2calc : public QWidget {
 
 public:
     explicit power2calc(QWidget *parent = nullptr);
-
+//slot functions
+private slots:
+    void updateComboBoxes();
 private:
     QComboBox *powerComboBox;
     QComboBox *hexComboBox;
