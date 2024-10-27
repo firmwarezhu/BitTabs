@@ -1,15 +1,21 @@
-#ifndef POWER2CALC_H
-#define POWER2CALC_H
+#ifndef power2calc_H
+#define power2calc_H
 
 #include <QWidget>
+#include <QComboBox>
+#include <QGridLayout> // Include QGridLayout
 
-class power2calc : public QWidget
-{
+class power2calc : public QWidget {
     Q_OBJECT
+
 public:
     explicit power2calc(QWidget *parent = nullptr);
 
-signals:
+private:
+    QComboBox *powerComboBox;
+    QComboBox *hexComboBox;
+    QComboBox *decimalComboBox;
+    QGridLayout *gridLayout; // Declare the grid layout
 };
 
-#endif // POWER2CALC_H
+#endif // power2calc_H
