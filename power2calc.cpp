@@ -17,7 +17,13 @@ power2calc::power2calc(QWidget *parent) : QWidget(parent) {
 
 
     // Create a QLabel for the introduction
-    QLabel *introLabel = new QLabel("The Power2Calc application calculates powers of 2, displaying results in hexadecimal, digital unit, and decimal formats. ");
+    QLabel *introLabel = new QLabel(
+        "Users can select an exponent 𝑛 (from 0 to 60),\n"
+        "and the calculator instantly displays results in multiple formats:\n"
+        "hexadecimal, human-readable units (like KB or MB), and decimal."
+    );
+    //set its background ligt green and font 14px
+    introLabel->setStyleSheet("background-color: #c8e6c9; font-size: 16px; color: balck;"); // Light green background and font 16px with navy blue text
     // Set the label properties
     introLabel->setWordWrap(true); // Allow text to wrap
     introLabel->setAlignment(Qt::AlignLeft); // Center the text
@@ -111,14 +117,9 @@ power2calc::power2calc(QWidget *parent) : QWidget(parent) {
     gridLayout->addWidget(hexComboBox, 1, 1); // Row 1, Column 1
     gridLayout->addWidget(unitsComboBox, 1, 2); // Row 1, Column 2
     gridLayout->addWidget(decimalComboBox, 1, 3); // Row 1, Column 3
-    
-
-    // Add the label and combo box to the layout
-    gridLayout->addWidget(unitsLabel, 3, 0); // Adjust row and column as needed
-    gridLayout->addWidget(unitsComboBox, 3, 1); // Adjust row and column as needed
 
     // Set vertical spacing between rows
-    gridLayout->setVerticalSpacing(10);
+    gridLayout->setVerticalSpacing(20);
     gridLayout->setContentsMargins(10, 10, 10, 10); // Adjust margins
 
     mainLayout->addLayout(gridLayout);
