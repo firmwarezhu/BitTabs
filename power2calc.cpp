@@ -68,10 +68,10 @@ power2calc::power2calc(QWidget *parent) : QWidget(parent) {
 
 
     // Create combo boxes
-    powerComboBox = new QComboBox(this);
-    hexComboBox = new QComboBox(this);
-    decimalComboBox = new QComboBox(this);
-    unitsComboBox = new QComboBox(this);
+    powerComboBox = new CopyableComboBox(this);
+    hexComboBox = new CopyableComboBox(this);
+    decimalComboBox = new CopyableComboBox(this);
+    unitsComboBox = new CopyableComboBox(this);
 
     // Set font size
     QFont font = powerComboBox->font();
