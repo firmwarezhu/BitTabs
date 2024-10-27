@@ -17,6 +17,7 @@ private:
     QComboBox *powerComboBox;
     QComboBox *hexComboBox;
     QComboBox *decimalComboBox;
+    QComboBox *unitsComboBox;
     QGridLayout *gridLayout; // Declare the grid layout
 };
 
